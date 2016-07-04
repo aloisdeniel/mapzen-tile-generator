@@ -1,0 +1,28 @@
+{
+  "name": "mapzen-tile-generator",
+  "version": "0.5.0",
+  "description": "A tool for generating easily a set of map tiles for a city from mapzen metro extracts.",
+  "main": "index.js",
+  "dependencies": {
+    "adm-zip": "^0.4.7",
+    "async": "^2.0.0-rc.6",
+    "commander": "^2.9.0",
+    "express": "^4.14.0",
+    "locks": "^0.2.2",
+    "mapnik": "^3.5.13",
+    "mapnik-pool": "^0.1.3",
+    "merge": "^1.2.0",
+    "mustache": "^2.2.1",
+    "request": "^2.72.0",
+    "sphericalmercator": "^1.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aloïs Deniel",
+  "license": "MIT",
+  "bin": {
+   "mapzen-tile-generator": "./index.js"
+  }
+}

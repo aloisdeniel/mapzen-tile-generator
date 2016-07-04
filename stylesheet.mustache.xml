@@ -1,0 +1,127 @@
+<Map background-color="{{ style.background }}" srs="+init=epsg:4326">
+  <Style name="Roads">
+    <Rule>
+      <MaxScaleDenominator>50000</MaxScaleDenominator>
+      <Filter>not([type]='primary') and not([type]='motorway')</Filter>
+      <LineSymbolizer stroke="{{ style.roads2border }}" stroke-width="5" />
+      </Rule>
+    <Rule>
+      <MaxScaleDenominator>50000</MaxScaleDenominator>
+      <Filter>not([type]='primary') and not([type]='motorway')</Filter>
+      <LineSymbolizer stroke="{{ style.roads2 }}" stroke-width="2" />
+      </Rule>
+  </Style>
+  <Style name="MainRoads">
+      <Rule>
+        <MaxScaleDenominator>100000</MaxScaleDenominator>
+        <Filter>[type]='motorway'</Filter>
+        <LineSymbolizer stroke="{{ style.roads1 }}" stroke-width="5" />
+      </Rule>
+      <Rule>
+        <MaxScaleDenominator>100000</MaxScaleDenominator>
+        <Filter>[type]='primary'</Filter>
+        <LineSymbolizer stroke="{{ style.roads1 }}" stroke-width="4" />
+      </Rule>
+  </Style>
+   <Style name="RoadNames">
+    <Rule>
+      </Rule>
+  </Style>
+  <Style name="Points">
+    <Rule>
+        <MarkersSymbolizer fill="#111111" />
+    </Rule> 
+  </Style>
+  <Style name="Landuse">
+    <Rule>
+      <PolygonSymbolizer fill="{{ style.landuse }}" />
+    </Rule>
+  </Style>
+  <Style name="Water">
+    <Rule>
+      <PolygonSymbolizer fill="{{ style.water }}" />
+    </Rule>
+  </Style>
+  <Style name="Natural">
+    <Rule>
+      <PolygonSymbolizer fill="#bbbbbb" />
+    </Rule>
+  </Style>
+  <Style name="Buildings">
+    <Rule>
+      <PolygonSymbolizer fill="{{ style.buildings }}" />
+    </Rule>
+  </Style>
+  <Style name="Places">
+    <Rule>
+      <MinScaleDenominator>100000</MinScaleDenominator>
+      <Filter>[type]='city'</Filter>
+      <TextSymbolizer face-name="Open Sans Regular" size="30" margin="10" fill="{{ style.text1 }}" halo-fill="white" halo-radius="3" placement="point" allow-overlap="false" clip="false">[name]</TextSymbolizer>
+    </Rule>
+    <Rule>
+      <MinScaleDenominator>100000</MinScaleDenominator>
+      <Filter>[type]='town'</Filter>
+      <TextSymbolizer face-name="Open Sans Regular" size="12" margin="10" fill="{{ style.text1 }}" halo-fill="#fafafa" halo-radius="2" placement="point" allow-overlap="false" clip="false">[name]</TextSymbolizer>
+    </Rule>
+    <Rule>
+      <MinScaleDenominator>50000</MinScaleDenominator>
+      <MaxScaleDenominator>100000</MaxScaleDenominator>
+      <Filter>[type]='town'</Filter>
+      <TextSymbolizer face-name="Open Sans Regular" size="21" margin="10" fill="#444444" halo-fill="#fafafa" halo-radius="2" placement="point" allow-overlap="false" clip="false">[name]</TextSymbolizer>
+    </Rule>
+  </Style>
+  <Layer name="waterways" srs="+init=epsg:4326">
+    <StyleName>Water</StyleName>
+    <Datasource>
+      <Parameter name="file">input/{{city}}/{{city}}_osm_waterareas</Parameter>
+      <Parameter name="type">shape</Parameter>
+    </Datasource>
+  </Layer>
+  <Layer name="landuse" srs="+init=epsg:4326">
+    <StyleName>Landuse</StyleName>
+    <Datasource>
+      <Parameter name="file">input/{{city}}/{{city}}_osm_landusages</Parameter>
+      <Parameter name="type">shape</Parameter>
+    </Datasource>
+  </Layer>
+  <Layer name="buildings" srs="+init=epsg:4326">
+    <StyleName>Buildings</StyleName>
+    <Datasource>
+      <Parameter name="file">input/{{city}}/{{city}}_osm_buildings</Parameter>
+      <Parameter name="type">shape</Parameter>
+    </Datasource>
+  </Layer>
+  
+  <Layer name="secondroads" srs="+init=epsg:4326">
+    <StyleName>Roads</StyleName>
+    <Datasource>
+      <Parameter name="file">input/{{city}}/{{city}}_osm_roads</Parameter>
+      <Parameter name="type">shape</Parameter>
+    </Datasource>
+  </Layer>
+  
+  <Layer name="mainroads" srs="+init=epsg:4326">
+    <StyleName>MainRoads</StyleName>
+    <Datasource>
+      <Parameter name="file">input/{{city}}/{{city}}_osm_roads</Parameter>
+      <Parameter name="type">shape</Parameter>
+    </Datasource>
+  </Layer>
+  
+  
+  <Layer name="roadNames" srs="+init=epsg:4326">
+    <StyleName>RoadNames</StyleName>
+    <Datasource>
+      <Parameter name="file">input/{{city}}/{{city}}_osm_roads</Parameter>
+      <Parameter name="type">shape</Parameter>
+    </Datasource>
+  </Layer>
+  
+  <Layer name="places" srs="+init=epsg:4326">
+    <StyleName>Places</StyleName>
+    <Datasource>
+      <Parameter name="file">input/{{city}}/{{city}}_osm_places</Parameter>
+      <Parameter name="type">shape</Parameter>
+    </Datasource>
+  </Layer>
+</Map>
