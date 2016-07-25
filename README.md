@@ -49,6 +49,14 @@ And finally, start your rendering with `-r` command argument.
 
 If you re-execute the command, the tiles will be updated.
 
+## Previewing and serving
+
+For previewing the result, start the command with `-p <port>` argument.
+
+Then start your favorite web browser and go to `http://localhost:<port>/<city>/`
+
+Tiles are hosted with urls like : `http://localhost:<port>/<city>/<zoom>/<y>/<x>.png`.
+
 ## Roadmap
 
 * More styles
