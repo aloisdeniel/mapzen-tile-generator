@@ -6,6 +6,7 @@ var async = require('async');
 var merge = require('merge');
 var express = require('express');
 var path = require('path');
+var fs = require('fs');
 var renderer = require('./renderer');
 var mapzen = require('./mapzen-downloader');
 
@@ -68,7 +69,7 @@ var optionsJson = fs.readFileSync('tiles.json', 'utf8');
 var options = merge(defaultOptions, JSON.stringify(optionsJson));
 
 program
-  .version('0.0.1')
+  .version('0.5.1')
   .option('-r, --render', 'Render a set of tiles ')
   .option('-p, --preview <port>', 'Start a preview server', parseInt)
   .parse(process.argv);
