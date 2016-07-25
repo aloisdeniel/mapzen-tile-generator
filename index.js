@@ -64,21 +64,26 @@ var defaultOptions = {
     }
 };
 
+var packageJson = fs.readFileSync(path.join(__dirname,'package.json'), 'utf8');
 
 var optionsJson = fs.readFileSync('tiles.json', 'utf8');
 var options = merge(defaultOptions, JSON.stringify(optionsJson));
 
 program
-  .version('0.5.1')
+  .version(packageJson.version)
   .option('-r, --render', 'Render a set of tiles ')
   .option('-p, --preview <port>', 'Start a preview server', parseInt)
   .parse(process.argv);
 
 if (program.render) {
    render(options,function(err,r){
+
+       if(err)
+         console.log("[Rendering] Failed : " + JSON.stringify(err))
+
        if(program.preview){
             preview(program.preview);
-        }
+       }
    })
 }
 else if(program.preview){
