@@ -27,13 +27,26 @@ function download(args,override,cb){
     if(args.proxy)
         proxiedRequest = request.defaults({proxy: args.proxy});
 
+    var total = -1;
+    var progress = 0;
+
     proxiedRequest.get(url)
+        .on('data', function (chunk) {
+            progress += chunk.length;
+            var perc = parseInt((progress / total) * 100);
+            console.log("[Download]("+args.city+") " + perc +" %");
+            status = perc;
+        })
         .on('error', function(err) {
             if(!finished) {
                 console.log(err)
                 cb(err);
                 finished=true;
             }
+        })
+        .on('response', function(response) {
+            total = response.headers["Content-Length"];
+            console.log("[Download]("+args.city+") Found distant file, starting to download "+ total  +" bytes ...");
         })
         .on('finish', function(err) { 
             console.log("[Download]("+args.city+") ... Finished!")

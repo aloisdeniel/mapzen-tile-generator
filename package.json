@@ -1,6 +1,6 @@
 {
   "name": "mapzen-tile-generator",
-  "version": "0.5.2",
+  "version": "0.5.4",
   "description": "A tool for generating easily a set of map tiles for a city from mapzen metro extracts.",
   "main": "index.js",
   "dependencies": {
