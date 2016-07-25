@@ -29,13 +29,16 @@ function download(args,override,cb){
 
     var total = -1;
     var progress = 0;
+    var perc = 0;
 
     proxiedRequest.get(url)
         .on('data', function (chunk) {
             progress += chunk.length;
-            var perc = parseInt((progress / total) * 100);
-            console.log("[Download]("+args.city+") " + perc +" %");
-            status = perc;
+            var newperc = parseInt((progress / total) * 100);
+            if(newperc !== perc) {
+                console.log("[Download]("+args.city+") " + perc +" %");
+                perc = newperc;
+            }
         })
         .on('error', function(err) {
             if(!finished) {
@@ -45,7 +48,7 @@ function download(args,override,cb){
             }
         })
         .on('response', function(response) {
-            total = response.headers["Content-Length"];
+            total = parseInt(response.headers["content-length"]);
             console.log("[Download]("+args.city+") Found distant file, starting to download "+ total  +" bytes ...");
         })
         .on('finish', function(err) { 
