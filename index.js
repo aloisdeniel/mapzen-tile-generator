@@ -64,10 +64,10 @@ var defaultOptions = {
     }
 };
 
-var packageJson = fs.readFileSync(path.join(__dirname,'package.json'), 'utf8');
+var packageJson = JSON.parse(fs.readFileSync(path.join(__dirname,'package.json'), 'utf8'));
 
-var optionsJson = fs.readFileSync('tiles.json', 'utf8');
-var options = merge(defaultOptions, JSON.stringify(optionsJson));
+var optionsJson = JSON.parse(fs.readFileSync('tiles.json', 'utf8'));
+var options = merge(defaultOptions, optionsJson);
 
 program
   .version(packageJson.version)
