@@ -39,6 +39,7 @@ function download(args,override,cb){
                 console.log("[Download]("+args.city+") " + perc +" %");
                 perc = newperc;
             }
+            
         })
         .on('error', function(err) {
             if(!finished) {
@@ -51,7 +52,8 @@ function download(args,override,cb){
             total = parseInt(response.headers["content-length"]);
             console.log("[Download]("+args.city+") Found distant file, starting to download "+ total  +" bytes ...");
         })
-        .on('finish', function(err) { 
+        .on('end', function(err) { 
+            if(err) return cb(err);
             console.log("[Download]("+args.city+") ... Finished!")
             cb(null,outZip); 
         })

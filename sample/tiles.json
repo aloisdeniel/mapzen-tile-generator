@@ -1,8 +1,6 @@
 {
-    "proxy": "http://spike-dmz.aql.fr:3128",
     "city": "lyon_france",
     "zoom" : {"min": 12, "max": 17 },
-    "//bbox": [4.6201, 45.5582, 5.1591, 45.6368], //final
-    "bbox": [4.82, 45.735, 4.83, 45.74], //test
-    "style": { "water": "#ffed00" }
+    "bbox": [4.82, 45.735, 4.83, 45.74],
+    "style": { "water": "#ff0000" }
 }

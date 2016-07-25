@@ -25,7 +25,7 @@ You must have a configuration file inside that folder named `tiles.json` :
 The styles are :
 
 - `background`: the map background color (default:`#f2f2f2`),
-- `water`: water areas fill color (default:`#ffed00`),
+- `water`: water areas fill color (default:`#6fc2dE`),
 - `text1`: city name color (default:`#434343`)
 - `text2`: road label color (default:`#a8a8a8`)
 - `roads1`: highway fill color (default:`#c2c2c2`)
@@ -46,6 +46,8 @@ And finally, start your rendering with `-r` command argument.
     -V, --version         output the version number
     -r, --render          Render a set of tiles 
     -p, --preview <port>  Start a preview server
+
+If you re-execute the command, the tiles will be updated.
 
 ## Roadmap
 

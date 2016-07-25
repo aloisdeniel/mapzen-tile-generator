@@ -51,7 +51,7 @@ var defaultOptions = {
     zoom : {min: 12, max: 17 },
     style:{
         background: '#f2f2f2',
-        water: "#ffed00",
+        water: "#6fc2dE",
         text1: "#434343", // City names
         text2: "#a8a8a8", // Roads
         roads1: "#c2c2c2", // Highways
